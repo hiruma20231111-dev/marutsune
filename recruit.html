@@ -23,8 +23,19 @@
       <a href="#requirements">募集要項</a>
       <a href="#apply" class="btn-recruit">今すぐ応募</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- モバイルナビドロワー -->
+<nav class="nav-drawer" id="nav-drawer">
+  <a href="index.html">コーポレート</a>
+  <a href="#jobs">募集職種</a>
+  <a href="#requirements">募集要項</a>
+  <a href="#apply" class="btn-recruit">今すぐ応募</a>
+</nav>
 
 <!-- ==============================
   1. メインビジュアル・キャッチコピー（ヒーロー）
@@ -130,7 +141,7 @@
     <!-- 仕事の流れ（1日の例） -->
     <div style="margin-top: 56px; background: #fff; border-radius: 10px; padding: 36px; border: 1px solid var(--color-border);">
       <h3 style="font-size:18px;font-weight:800;color:var(--color-primary);margin-bottom:24px;text-align:center;">1日の仕事の流れ（例）</h3>
-      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;">
+      <div class="daily-flow" style="display:grid;grid-template-columns:repeat(6,1fr);gap:0;position:relative;">
         <div style="text-align:center;padding:16px 8px;border-right:1px dashed var(--color-border);">
           <div style="font-size:13px;font-weight:700;color:var(--color-accent);margin-bottom:4px;">5:30〜6:00</div>
           <div style="font-size:13px;font-weight:700;color:var(--color-primary);margin-bottom:6px;">出勤・点呼</div>
@@ -714,6 +725,22 @@
     </div>
   </div>
 </footer>
+
+<script>
+  /* ハンバーガーメニュー */
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('nav-drawer');
+  hamburger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+</script>
 
 </body>
 </html>

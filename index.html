@@ -28,8 +28,19 @@
       <a href="#contact">お問い合わせ</a>
       <a href="recruit.html" class="btn-recruit">採用情報</a>
     </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- モバイルナビドロワー -->
+<nav class="nav-drawer" id="nav-drawer">
+  <a href="#company">会社概要</a>
+  <a href="#services">サービス</a>
+  <a href="#contact">お問い合わせ</a>
+  <a href="recruit.html" class="btn-recruit">採用情報</a>
+</nav>
 
 <!-- ==============================
      ページタブ（セクション内リンク）
@@ -663,6 +674,20 @@
 </footer>
 
 <script>
+  /* ハンバーガーメニュー */
+  const hamburger = document.getElementById('hamburger');
+  const drawer    = document.getElementById('nav-drawer');
+  hamburger.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+  });
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
+
   /* タブのアクティブ制御（スクロール連動） */
   const tabs = document.querySelectorAll('.page-tabs a[href^="#"]');
   const sections = [];
